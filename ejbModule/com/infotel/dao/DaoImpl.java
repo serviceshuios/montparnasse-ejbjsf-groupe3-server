@@ -42,7 +42,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	@Override
 	public void supprimerPersonne(Personne p) {
 		// TODO Auto-generated method stub
-		em.remove(p);
+		em.createQuery("DELETE FROM Personne p WHERE p.idPersonne = ?");
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	@Override
 	public void supprimerLotissement(Lotissement l) {
 		// TODO Auto-generated method stub
-		em.remove(l);
+		em.createQuery("DELETE FROM Lotissement l WHERE l.idLot = ?");
 	}
 
 	@Override
@@ -95,13 +95,14 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 
 	@Override
 	public void acheterLotissement(Personne p, Lotissement l) {
-		// TODO Auto-generated method stub
+		em.createQuery("UPDATE Lotissement SET personne_idpersonne = Personne.idPersonne WHERE l.idLot = ?");
 
 	}
 
 	@Override
 	public void seMarier(Personne p1, Personne p2) {
-		// TODO Auto-generated method stub
+		em.createQuery("UPDATE Personne SET personne_idpersonne = Personne.idPersonne WHERE p.idPersonne = ?p1");
+		em.createQuery("UPDATE Personne SET personne_idpersonne = Personne.idPersonne WHERE p.idPersonne = ?p2");
 
 	}
 
