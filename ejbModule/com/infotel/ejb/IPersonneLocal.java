@@ -26,7 +26,7 @@ public interface IPersonneLocal {
 	
 	
 	
-	public void acheterLotissement(Personne p, Lotissement l);
+	public void acheterLotissement(Long idPersonne, Long idLot);
 	public void seMarier (Long idPersonne1, Long idPersonne2);
 
 }

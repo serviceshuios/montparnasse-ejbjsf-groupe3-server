@@ -96,8 +96,8 @@ public class PersonneEjbImpl implements IPersonneLocal, IPersonneRemote {
 	}
 
 	@Override
-	public void acheterLotissement(Personne p, Lotissement l) {
-		dao.acheterLotissement(p, l);
+	public void acheterLotissement(Long idPersonne, Long idLot) {
+		dao.acheterLotissement(idPersonne, idLot);;
 
 	}
 
