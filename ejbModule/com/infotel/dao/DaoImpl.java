@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.infotel.metier.Lotissement;
 import com.infotel.metier.Personne;
@@ -40,9 +41,11 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void supprimerPersonne(Personne p) {
-		// TODO Auto-generated method stub
-		em.createQuery("DELETE FROM Personne p WHERE p.idPersonne = ?");
+	public void supprimerPersonne(Long idPersonne) {
+		Query q = null;
+		q = em.createQuery("DELETE FROM Personne p WHERE p.idPersonne = :id").setParameter("id", idPersonne);
+		idPersonne = q.executeUpdate();
+		
 	}
 
 	@Override
@@ -76,9 +79,10 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void supprimerLotissement(Lotissement l) {
-		// TODO Auto-generated method stub
-		em.createQuery("DELETE FROM Lotissement l WHERE l.idLot = ?");
+	public void supprimerLotissement(Long idLot) {
+		Query q = null;
+		em.createQuery("DELETE FROM Lotissement l WHERE l.idLot = :id").setParameter("id", idLot);
+		idLot = q.executeUpdate();
 	}
 
 	@Override
