@@ -102,8 +102,8 @@ public class PersonneEjbImpl implements IPersonneLocal, IPersonneRemote {
 	}
 
 	@Override
-	public void seMarier(Personne p1, Personne p2) {
-		dao.seMarier(p1, p2);
+	public void seMarier(Long idPersonne1, Long idPersonne2) {
+		dao.seMarier(idPersonne1, idPersonne2);
 		
 	}
 

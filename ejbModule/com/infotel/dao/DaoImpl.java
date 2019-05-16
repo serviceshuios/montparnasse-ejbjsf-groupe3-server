@@ -104,10 +104,12 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void seMarier(Personne p1, Personne p2) {
-		em.createQuery("UPDATE Personne SET personne_idpersonne = Personne.idPersonne WHERE p.idPersonne = ?p1");
-		em.createQuery("UPDATE Personne SET personne_idpersonne = Personne.idPersonne WHERE p.idPersonne = ?p2");
-
+	public void seMarier(Long idPersonne1, Long idPersonne2) {
+		Query q = null;
+		q=em.createQuery("UPDATE Personne SET personne.idpersonne = Personne.idPersonne2 WHERE idPersonne = :idPersonne1");
+		q=em.createQuery("UPDATE Personne SET personne.idpersonne = Personne.idPersonne1 WHERE idPersonne = :idPersonne2");
+		idPersonne1 = (long) q.executeUpdate();
+		idPersonne2 = (long) q.executeUpdate();
 	}
 
 }
