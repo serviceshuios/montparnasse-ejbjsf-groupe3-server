@@ -44,8 +44,8 @@ public class LotissementEjbImpl implements ILotissementLocal, ILotissementRemote
 	}
 
 	@Override
-	public void supprimerPersonne(Personne p) {
-		dao.supprimerPersonne(p);
+	public void supprimerPersonne(Long idPersonne) {
+		dao.supprimerPersonne(idPersonne);
 
 	}
 
@@ -80,8 +80,8 @@ public class LotissementEjbImpl implements ILotissementLocal, ILotissementRemote
 	}
 
 	@Override
-	public void supprimerLotissement(Lotissement l) {
-		dao.supprimerLotissement(l);
+	public void supprimerLotissement(Long idLot) {
+		dao.supprimerLotissement(idLot);
 
 	}
 
@@ -108,4 +108,6 @@ public class LotissementEjbImpl implements ILotissementLocal, ILotissementRemote
 		dao.seMarier(p1, p2);
 		
 	}
+
+	
 }

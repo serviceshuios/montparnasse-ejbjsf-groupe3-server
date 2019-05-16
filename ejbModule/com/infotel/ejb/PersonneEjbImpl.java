@@ -42,8 +42,8 @@ public class PersonneEjbImpl implements IPersonneLocal, IPersonneRemote {
 	}
 
 	@Override
-	public void supprimerPersonne(Personne p) {
-		dao.supprimerPersonne(p);
+	public void supprimerPersonne(Long idPersonne) {
+		dao.supprimerPersonne(idPersonne);
 
 	}
 
@@ -78,8 +78,8 @@ public class PersonneEjbImpl implements IPersonneLocal, IPersonneRemote {
 	}
 
 	@Override
-	public void supprimerLotissement(Lotissement l) {
-		dao.supprimerLotissement(l);
+	public void supprimerLotissement(Long idLot) {
+		dao.supprimerLotissement(idLot);
 
 	}
 
