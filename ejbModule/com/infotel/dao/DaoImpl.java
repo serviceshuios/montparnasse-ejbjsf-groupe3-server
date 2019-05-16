@@ -98,17 +98,19 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void acheterLotissement(Personne p, Lotissement l) {
-		em.createQuery("UPDATE Lotissement SET personne_idpersonne = Personne.idPersonne WHERE l.idLot = ?");
-
+	public void acheterLotissement(Long idPersonne, Long idLot) {
+		Query q = null;
+		q=em.createQuery("UPDATE Lotissement l SET l.personne.idpersonne = :x WHERE l.idLot = :y").setParameter("x", idPersonne).setParameter("y", idLot);
+		idLot= (long) q.executeUpdate();
 	}
 
 	@Override
 	public void seMarier(Long idPersonne1, Long idPersonne2) {
 		Query q = null;
-		q=em.createQuery("UPDATE Personne SET personne.idpersonne = Personne.idPersonne2 WHERE idPersonne = :idPersonne1");
-		q=em.createQuery("UPDATE Personne SET personne.idpersonne = Personne.idPersonne1 WHERE idPersonne = :idPersonne2");
+		q=em.createQuery("UPDATE Personne SET personne_idpersonne =:x WHERE idPersonne = :y").setParameter("x", idPersonne2).setParameter("y", idPersonne1);
 		idPersonne1 = (long) q.executeUpdate();
+		q=em.createQuery("UPDATE Personne SET personne_idpersonne =:x WHERE idPersonne = :y").setParameter("x", idPersonne1).setParameter("y", idPersonne2);
+		
 		idPersonne2 = (long) q.executeUpdate();
 	}
 
