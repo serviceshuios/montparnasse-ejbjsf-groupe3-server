@@ -44,7 +44,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void supprimerPersonne(Long idPersonne) {
 		Query q = null;
 		q = em.createQuery("DELETE FROM Personne p WHERE p.idPersonne = :id").setParameter("id", idPersonne);
-		idPersonne = q.executeUpdate();
+		idPersonne = (long) q.executeUpdate();
 		
 	}
 
@@ -82,7 +82,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void supprimerLotissement(Long idLot) {
 		Query q = null;
 		em.createQuery("DELETE FROM Lotissement l WHERE l.idLot = :id").setParameter("id", idLot);
-		idLot = q.executeUpdate();
+		idLot = (long) q.executeUpdate();
 	}
 
 	@Override
